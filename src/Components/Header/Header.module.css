@@ -99,10 +99,11 @@ section input{
     width: 20%;
 }
 .language:hover,
-.order_container a:hover{
+.order_container a:hover,
+.lower_container ul li:hover{
     border: white solid 1px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 7px;
 }
 .cart{
     position: relative;
@@ -115,4 +116,35 @@ section input{
     background-color: #1a1a1a;
     left: 14px;
     color: orange;
+}
+.lower_container{
+    background-color: #232f3e;
+    color: white;
+}
+.lower_container ul{
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+.lower_container ul li{
+    padding: 8px;
+}
+.lower_container ul li:first-child{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+@media screen and (max-width: 576px){
+    .header_container{
+        display:flex;
+        flex-direction: column !important;
+        height: auto;
+    }
+    .lower_container ul li:not(:first-child){
+        display: none;
+    }
+    .language{
+        display: none;
+    }
 }
