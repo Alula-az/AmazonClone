@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { GrLocation } from "react-icons/gr";
 import classes from "../Header/Header.module.css";
+import { Link } from "react-router-dom";
 import LowerHeader from "../Header/LowerHeader";
 
 const Header = () => {
@@ -12,12 +13,12 @@ const Header = () => {
         <div className={classes.header_container}>
           {/* logo section */}
           <div className={classes.logo_container}>
-            <a href="#">
+            <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
                 alt="amazon logo"
               />
-            </a>
+            </Link>
             {/* delivery */}
             <div className={classes.delivery}>
               <span>
@@ -42,7 +43,7 @@ const Header = () => {
           </div>
           {/* right side link */}
           <div className={classes.order_container}>
-            <a href="" className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Flag_of_the_United_States.png/1200px-Flag_of_the_United_States.png"
                 alt="US flag"
@@ -50,23 +51,23 @@ const Header = () => {
               <select name="" id="">
                 <option value="">EN</option>
               </select>
-            </a>
+            </Link>
             {/* three components */}
-            <a href="">
+            <Link to="/Payment">
               <p>Sign In</p>
               <span>Account & Lists</span>
-            </a>
+            </Link>
             {/* orders */}
-            <a href="">
+            <Link to="/Orders">
               <p>returns</p>
               <span>& orders</span>
-            </a>
+            </Link>
             {/* cart */}
-            <a href="" className={classes.cart}>
+            <Link to="/Cart" className={classes.cart}>
               {/* icon */}
               <HiOutlineShoppingCart size={35} />
               <span>0</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
