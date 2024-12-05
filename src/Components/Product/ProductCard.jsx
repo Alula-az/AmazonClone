@@ -5,19 +5,24 @@ import classes from "../Product/Product.module.css";
 import { Link } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader"; 
 
-function ProductCard({ product }) {
-  const { image, title, id, rating, price } = product || {};
+function ProductCard({ product,flex, renderDesc }) {
+  const { image, title, id, rating, price, description } = product || {};
 
   return (
-    <div className={`${classes.card_container}`}>
+    <div
+      className={`${classes.card_container}${
+        flex ? classes.product_flexed : ""
+      }`}
+    >
       <Link to={`/product/${id}`}>
-        <img 
-          src={image || "https://via.placeholder.com/150"} 
-          alt={title || "Product Title"} 
-        /> 
+        <img
+          src={image || "https://via.placeholder.com/150"}
+          alt={title || "Product Title"}
+        />
       </Link>
       <div>
         <h3>{title || "Product Title"}</h3>
+        {renderDesc && <div style={{maxWidth:"750px"}}>{description}</div>}
         <div className={classes.rating}>
           {rating ? (
             <>
