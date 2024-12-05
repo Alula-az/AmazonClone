@@ -1,10 +1,17 @@
 import React from "react";
-import classes from "../Loader/Loader.module.css"; 
+import { PulseLoader } from "react-spinners";
 
 const Loader = () => {
   return (
-    <div className="loader-container">
-      <div className={classes.loader}></div>
+    <div 
+    style={{
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "50vh",
+}
+    }>
+      <PulseLoader color="#f79b34" />
     </div>
   );
 };

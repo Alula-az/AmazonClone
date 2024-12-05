@@ -1,28 +1,39 @@
-// import React from 'react'
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-import ProductCard from './ProductCard'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ProductCard from "./ProductCard";
 import classes from "../Product/Product.module.css";
-
+import Loader from "../../Components/Loader/Loader";
 
 function Product() {
-    const [products, setProcucts] = useState([])
-    useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
-        .then((res) => {
-            setProcucts(res.data)
-        }).catch((err)=>{
-            console.log(err)
-        })
-    },[])
+  const [products, setProducts] = useState([]); 
+  const [isLoading, setIsLoading] = useState(true); 
+
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((res) => {
+        setProducts(res.data); 
+        setIsLoading(false); 
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false); 
+      });
+  }, []);
 
   return (
-    <section className={classes.products_container}>
-        {products.map((singleProduct) => (
-             <ProductCard product={singleProduct} key={singleProduct.id}/>
-        ))}
-    </section>
-  )
+    <>
+      {isLoading ? (
+        <Loader /> 
+      ) : (
+        <section className={classes.products_container}>
+          {products.map((singleProduct) => (
+            <ProductCard product={singleProduct} key={singleProduct.id} />
+          ))}
+        </section>
+      )}
+    </>
+  );
 }
 
-export default Product
+export default Product;

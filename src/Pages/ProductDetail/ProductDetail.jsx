@@ -4,27 +4,36 @@ import { useParams } from "react-router-dom";
 import { productUrl } from "../../Api/endPoints";
 import axios from "axios";
 import ProductCard from "../../Components/Product/ProductCard";
+import Loader from "../../Components/Loader/Loader"; 
 
 function ProductDetail() {
-  const { productId } = useParams(); // Extract productId from the URL
-  const [product, setProduct] = useState({}); // Initialize product as an empty object
+  const { productId } = useParams(); 
+  const [product, setProduct] = useState(null); 
+  const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    // Corrected API endpoint to fetch a single product
+    setIsLoading(true); 
     axios
-      .get(`${productUrl}/products/${productId}`) // Added 'products' to match API convention
+      .get(`${productUrl}/products/${productId}`) 
       .then((res) => {
-        setProduct(res.data); // Set the fetched product data
+        setProduct(res.data); 
+        setIsLoading(false);
       })
       .catch((err) => {
-        console.log("Error fetching product:", err); // Log error for debugging
+        console.log("Error fetching product:", err); 
+        setIsLoading(false); 
       });
-  }, [productId]); // Added productId as a dependency for useEffect
+  }, [productId]); 
 
   return (
     <LayOut>
-      <ProductCard product={product} />{" "}
-      {/* Pass fetched product to ProductCard */}
+      {isLoading ? (
+        <Loader /> 
+      ) : product ? (
+        <ProductCard product={product} /> 
+      ) : (
+        <p>Product not found</p> 
+      )}
     </LayOut>
   );
 }
