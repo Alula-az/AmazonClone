@@ -7,7 +7,7 @@ import Loader from "../../Components/Loader/Loader";
 import { DataContext } from "../DataProvider/DataProvider";
 import {Type} from "../Utility/action.type"
  
-function ProductCard({ product,flex, renderDesc }) {
+function ProductCard({ product,flex, renderDesc, renderAdd }) {
   const { image, title, id, rating, price, description } = product || {};
 
   const [state, dispatch]= useContext(DataContext)
@@ -34,7 +34,7 @@ function ProductCard({ product,flex, renderDesc }) {
       </Link>
       <div>
         <h3>{title || "Product Title"}</h3>
-        {renderDesc && <div style={{maxWidth:"750px"}}>{description}</div>}
+        {renderDesc && <div style={{ maxWidth: "750px" }}>{description}</div>}
         <div className={classes.rating}>
           {rating ? (
             <>
@@ -52,7 +52,13 @@ function ProductCard({ product,flex, renderDesc }) {
             <p>Price not available</p>
           )}{" "}
         </div>
-        <button className={classes.button} onClick={addToCart}>add to cart</button>
+        <div>
+          {renderAdd && (
+            <button className={classes.button} onClick={addToCart}>
+              add to cart
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
