@@ -1,19 +1,17 @@
-import React from 'react'
-import { GiHamburgerMenu } from "react-icons/gi";
-import classes from "../Header/Header.module.css";
-
-
-function LowerHeader () {
+import React from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import classes from "./Header.module.css";
+function LowerHeader() {
   return (
-    <div className={classes.lower_container}>
+    <div className={classes.lower__container}>
       <ul>
         <li>
-          <GiHamburgerMenu />
+          <AiOutlineMenu />
           <p>All</p>
         </li>
         <li>Today's Deals</li>
-        <li>Customer Service</li>
-        <li>Registry</li> 
+        <li>Costumer Service</li>
+        <li>Registry</li>
         <li>Gift Cards</li>
         <li>Sell</li>
       </ul>
@@ -21,4 +19,4 @@ function LowerHeader () {
   );
 }
 
-export default LowerHeader
+export default LowerHeader;
